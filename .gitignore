@@ -1,0 +1,5 @@
+# Dependency directories
+node_modules/
+# This line ignores the node_modules folder and its contents.
+# This helps keep repository smaller and avoids tracking unnecessary files.
+# When others clone the repo, they can run npm install or yarn install to regenerate it based on the package.json.

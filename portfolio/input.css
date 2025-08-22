@@ -1,0 +1,370 @@
+@import "tailwindcss";
+@import "./assets/fonts/fonts.css";
+
+@theme {
+  --bg-gradient-a: linear-gradient(#ad5cff 0%, #0099ff 48.96%, #99f7ff 100%);
+  --color-orange-active: #f78f42;
+  --bg-radial-gradient-white: radial-gradient(
+    100% 140% at 60% -10%,
+    rgba(255, 255, 255, 0) 0%,
+    #fff 75%
+  );
+  --bg-radial-gradient-dark: radial-gradient(
+    100% 140% at 60% -10%,
+    rgba(255, 255, 255, 0) 0%,
+    #c5c5c5 75%
+  );
+  --bg-body-color: linear-gradient(
+    96deg,
+    #ffc0ad,
+    #f8c7ff 37.79%,
+    #d2ccff 75.81%,
+    #c2d1ff
+  );
+  --bg-card-color: #f3f3f7;
+  --bg-card-dark-color: #72747e;
+  /* --bg-card-color: #d1d1d1; */
+  --bg-card-hover: linear-gradient(
+    123deg,
+    #0099ff 0%,
+    #5c7fff 50%,
+    #8575ff 100%
+  );
+  --breakpoint-5xl: 140rem;
+}
+body {
+  /* background-image: var(--bg-gradient-a); */
+  background-image: var(--bg-radial-gradient-dark);
+  /* background-image: linear-gradient(120deg, #f8c7ff 20.08%, #d2ccff 75.81%); */
+  /* background-image: var(--bg-body-color); */
+  /* background-image: repeating-linear-gradient(
+      22.5deg,
+      transparent,
+      transparent 2px,
+      rgba(75, 85, 99, 0.06) 2px,
+      rgba(75, 85, 99, 0.06) 3px,
+      transparent 3px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      67.5deg,
+      transparent,
+      transparent 2px,
+      rgba(107, 114, 128, 0.05) 2px,
+      rgba(107, 114, 128, 0.05) 3px,
+      transparent 3px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      112.5deg,
+      transparent,
+      transparent 2px,
+      rgba(55, 65, 81, 0.04) 2px,
+      rgba(55, 65, 81, 0.04) 3px,
+      transparent 3px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      157.5deg,
+      transparent,
+      transparent 2px,
+      rgba(31, 41, 55, 0.03) 2px,
+      rgba(31, 41, 55, 0.03) 3px,
+      transparent 3px,
+      transparent 8px
+    ); */
+  font-family: "Euclid Circular A Regular";
+  font-weight: 400;
+  &.modal-open {
+    overflow: hidden;
+  }
+}
+main {
+  @apply px-5 sm:px-12;
+}
+strong {
+  font-family: "Euclid Circular A Medium";
+}
+
+.summary-section,
+.introduction-section {
+  @apply flex flex-col items-center gap-10 relative w-full p-5 px-0 2xl:w-4/5 2xl:mx-auto;
+  /* @apply flex flex-col items-center gap-10 overflow-hidden relative w-full; */
+  h1 {
+    font-family: "Euclid Circular A SemiBold";
+  }
+  p {
+    font-family: "Euclid Circular A Light";
+  }
+}
+.introduction-section {
+  @apply lg:flex-row justify-center py-6 px-0;
+  .profile-pic {
+    @apply border border-current border-solid rounded-full h-[225px] w-[225px] overflow-hidden text-center;
+  }
+  .profile-description {
+    @apply flex flex-col self-stretch;
+    h2 {
+      /* @apply text-[min(10vw,40px)]; */
+      font-size: clamp(16px, 10vw, 40px);
+      line-height: clamp(20px, 10vw, 58px);
+    }
+    h3 {
+      @apply text-[min(10vw,26px)];
+    }
+    a[href^="tel:"],
+    .tel,
+    .link {
+      color: #3398f7;
+      text-decoration: underline;
+    }
+    p {
+      font-size: clamp(16px, 10vw, 20px);
+    }
+    .btn-cv {
+      @apply bg-[#131313] text-white rounded-3xl py-2.5 px-8 self-start border border-solid border-transparent mt-3.5 lg:mt-auto;
+      &:hover {
+        border-color: #72747e;
+        background-image: var(--bg-body-color);
+      }
+    }
+  }
+}
+.divider {
+  border-bottom-width: 4px;
+  border-style: groove;
+  border-color: #f3f3f7;
+}
+.tabs-container {
+  /* @apply flex flex-col justify-center items-center gap-14 p-8 w-full 2xl:w-4/5 2xl:mx-auto; */
+  @apply flex flex-col my-10 w-full 2xl:w-4/5 2xl:mx-auto;
+  ul {
+    @apply flex justify-center items-center gap-5 sm:gap-10 rounded-[40px] border border-[#72747E] p-1 m-auto w-max;
+    .tab-list {
+      @apply sm:text-xl text-[#131313] cursor-pointer rounded-[40px] bg-[var(--bg-card-color)];
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
+      transform-style: preserve-3d;
+      padding: 10px 24px;
+      opacity: 0.6;
+      &:hover {
+        border: 1px solid #72747e;
+        background-image: var(--bg-body-color);
+        opacity: 1;
+      }
+    }
+    .active-tab {
+      border: 1px solid #72747e;
+      background-image: var(--bg-body-color);
+      opacity: 1;
+    }
+  }
+  /* .tab-content {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 42px;
+    position: relative;
+  } */
+}
+.card-wrapper {
+  /* @apply flex flex-wrap justify-center items-start self-stretch basis-auto gap-6 w-full; */
+  /* @apply grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6 m-auto; */
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 0;
+  overflow-x: auto;
+  width: 98%;
+  margin: auto;
+  /* Makes scrolling smooth  */
+  scroll-behavior: smooth;
+  /* Define custom name for Carousel  */
+  anchor-name: --carousel;
+  /* Defines the type of Scrolling like x means horizontal and y means verticle along with 'mandatory' or optional
+    The 'scroll-snap-type' CSS property is set on a scroll container, opting it into scroll snapping by setting the direction 
+    and strictness of snap point enforcement within the snap port.
+  */
+  scroll-snap-type: x mandatory;
+  /* Creating the Carousel navigation buttons */
+  scroll-marker-group: after;
+  &::scroll-marker-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+  /* Creating Scroll Buttons */
+  &::scroll-button(right),
+  &::scroll-button(left) {
+    content: "→";
+    border: 0;
+    background-color: #131313;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    padding-bottom: 0.1rem;
+    /* For position the Scroll Buttons */
+    position: fixed;
+    /* Using the custom name which we already defined for above Carousel  */
+    position-anchor: --carousel;
+    /* Defines the position area (Default horizonal then verticle) */
+    position-area: right center;
+    /* For overlapping the Scroll Buttons on the Carousel */
+    translate: -50%;
+  }
+  &::scroll-button(left) {
+    content: "←";
+    position-area: left center;
+    translate: 50%;
+  }
+  &::scroll-button(right):disabled,
+  &::scroll-button(left):disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .card {
+    /* @apply bg-[var(--bg-card-color)] h-[500px] flex items-start flex-col grow-1 shrink basis-0 relative p-[1px] shadow rounded-3xl cursor-pointer min-w-[300px] 5xl:max-w-[450px]; */
+    @apply bg-[var(--bg-card-dark-color)] p-[2px] relative shadow rounded-3xl cursor-pointer aspect-[3/3];
+    flex: 0 0 20rem;
+    transform-style: preserve-3d;
+    transition: box-shadow 0.4s;
+    /* Desfining the snapping point, here we're using 'start' to align start of the card */
+    scroll-snap-align: start;
+    &::scroll-marker {
+      content: "";
+      background-color: #131313;
+      border-radius: 50%;
+      height: 1rem;
+      width: 1rem;
+    }
+    &::scroll-marker:target-current {
+      background-color: white;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      transform: translateZ(-1px);
+      pointer-events: none;
+      transition-property: filter, inset;
+      transition-duration: 0.3s;
+      transition-timing-function: ease;
+      background-clip: content-box !important;
+      background: var(--bg-card-hover);
+    }
+    &:hover::before {
+      filter: blur(15px);
+    }
+    .card-content {
+      display: none;
+    }
+    .card-img {
+      /* @apply self-stretch rounded-[22px] h-full object-cover relative w-full; */
+      @apply rounded-[22px] object-cover object-center h-full w-full;
+    }
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.modal {
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  animation: fadeIn 0.3s;
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    max-width: 450px;
+    animation: zoomIn 0.3s;
+    display: flex;
+    flex-direction: column;
+    max-height: 600px;
+    overflow-y: auto;
+    img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+    h3 {
+      font-family: "Euclid Circular A Medium";
+    }
+  }
+  .close-btn {
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+.modal-container {
+  /* height: 600px;
+  max-height: max-content;
+  max-height: -moz-max-content; */
+  display: flex;
+  flex-direction: column;
+  max-height: 600px;
+}
+
+.modal-content {
+  .card-img {
+    @apply rounded-[22px] block m-auto object-cover object-center h-full w-full;
+  }
+}
